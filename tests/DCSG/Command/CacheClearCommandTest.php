@@ -2,9 +2,9 @@
 
 namespace DCSG\Tests;
 
+use DCSG\Application;
 use DCSG\ClearCacheCommand;
 use DCSG\Command\CacheClearCommand;
-use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class CacheClearCommandTest extends \PHPUnit_Framework_TestCase

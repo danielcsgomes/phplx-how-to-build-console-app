@@ -13,7 +13,7 @@
         >
     <testsuites>
         <testsuite name="How to build Console Applications test suite">
-            <directory>./tests//</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 
