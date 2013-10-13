@@ -53,19 +53,26 @@ EOF
             false
         );
 
-        // Logic
-        // ...
-        $counter = 0;
-        $files = glob($cacheDir . '/*');
-
-        if ($answer) {
-            foreach ($files as $file) {
-                if (is_file($file)) {
-                    unlink($file);
-                    $counter++;
-                }
-            }
+        if (!$answer) {
+            exit;
         }
+
+        // Logic
+        $container = $this->getApplication()->getContainer();
+        $fs = $container->get('filesystem');
+        $finder = $container->get('finder');
+
+        if (!$fs->exists($cacheDir)) {
+            $fs->mkdir($cacheDir);
+        }
+
+        if (!$fs->exists($cacheDir . '/test.txt')) {
+            $fs->touch($cacheDir . '/test.txt');
+        }
+
+        $files = $finder->in($cacheDir);
+        $counter = count($files);
+        $fs->remove($files);
 
         // Writes the Output
         $output->writeln(
