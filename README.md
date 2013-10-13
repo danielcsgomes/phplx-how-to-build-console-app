@@ -1,5 +1,7 @@
 # How to build Console Applications
 
+[![Build Status](https://travis-ci.org/danielcsgomes/phplx-how-to-build-console-app.png?branch=master)](https://travis-ci.org/danielcsgomes/phplx-how-to-build-console-app)
+
 Source code of my talk at [phplx October 2013 meetup](http://phplx.net)
 
 ## Using
