@@ -4,6 +4,10 @@
 
 Source code of my talk at [phplx October 2013 meetup](http://phplx.net)
 
+## Disclaimer
+
+The code in this repository is only for demonstration purposes.
+
 ## Using
 
 Install using composer with development dependencies:
