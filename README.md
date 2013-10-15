@@ -10,17 +10,24 @@ The code in this repository is only for demonstration purposes.
 
 ## Using
 
-Install using composer with development dependencies:
+```
 
-    curl -sS https://getcomposer.org/installer | php
+# Install using composer with development dependencies:
+curl -sS https://getcomposer.org/installer | php
 
-Then, using the `composer.phar` file:
+# Then, using the `composer.phar` file:
+php composer.phar install --dev
 
-    php composer.phar install --dev
+# Run Application
+php app.php
+  
+# Run examples
+php examples/{Folder}/{ExampleName}.php
 
-Run tests:
+# Run tests:
+./vendor/bin/phpunit
 
-    ./vendor/bin/phpunit
+```
 
 ## License
 The code is licensed under the [MIT License](https://github.com/danielcsgomes/phplx-how-to-build-console-app/blob/master/LICENSE)
