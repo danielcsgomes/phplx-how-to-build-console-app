@@ -38,39 +38,34 @@ EOF
         // Reads the Input
         $directory = $input->getArgument('directory');
 
+        // Get the container and services
+        $container = $this->getApplication()->getContainer();
+        $fs = $container->get('filesystem');
+        $finder = $container->get('finder');
+
         // Validate the input
-        if (false === $cacheDir = realpath($directory)) {
+        if (!$fs->exists($directory)) {
             throw new \InvalidArgumentException('Directory does not exist.');
         }
 
         $force = $input->getOption('force');
 
-        // Ask the user if it's the right directory
-        $dialog = $this->getHelperSet()->get('dialog');
-        $answer = $dialog->askConfirmation(
-            $output,
-            sprintf('Remove all files inside: %s ? (no) ', $cacheDir),
-            false
-        );
+        if (!$force) {
+            // Ask the user if it's the right directory
+            $dialog = $this->getHelperSet()->get('dialog');
+            $answer = $dialog->askConfirmation(
+                $output,
+                sprintf('Remove all files inside: %s ? (no) ', $directory),
+                false
+            );
 
-        if (!$answer) {
-            exit;
+            if (!$answer) {
+                exit;
+            }
         }
 
-        // Logic
-        $container = $this->getApplication()->getContainer();
-        $fs = $container->get('filesystem');
-        $finder = $container->get('finder');
 
-        if (!$fs->exists($cacheDir)) {
-            $fs->mkdir($cacheDir);
-        }
-
-        if (!$fs->exists($cacheDir . '/test.txt')) {
-            $fs->touch($cacheDir . '/test.txt');
-        }
-
-        $files = $finder->in($cacheDir);
+        $files = $finder->in($directory);
         $counter = count($files);
         $fs->remove($files);
 
