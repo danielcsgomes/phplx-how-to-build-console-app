@@ -8,6 +8,10 @@ The source code of my talk at [phplx October 2013 meetup](http://phplx.net)
 
 The code in this repository is only for demonstration purposes.
 
+## Slides
+
+The slides of this talk are available [here](https://speakerdeck.com/danielcsgomes/how-to-build-console-applications).
+
 ## Installation
 
 ```
